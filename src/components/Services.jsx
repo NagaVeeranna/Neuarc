@@ -58,6 +58,7 @@ const Services = () => {
               >
                 <Paper
                   elevation={0}
+                  className="glow-border"
                   sx={{
                     p: 4,
                     height: '100%',

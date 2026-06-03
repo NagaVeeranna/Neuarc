@@ -10,7 +10,7 @@ const theme = createTheme({
       main: '#8957e5', // Purple accent
     },
     info: {
-      main: '#f0883e', // Orange accent
+      main: '#38bdf8', // Cyan accent
     },
     background: {
       default: '#0d1117',

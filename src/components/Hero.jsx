@@ -3,7 +3,32 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', pt: { xs: 15, md: 0 }, position: 'relative', overflow: 'hidden' }}>
+    <Box sx={{ 
+      minHeight: { xs: 'auto', md: '100vh' }, 
+      display: 'flex', 
+      alignItems: 'center', 
+      pt: { xs: 15, md: 12 }, 
+      pb: { xs: 10, md: 0 },
+      position: 'relative', 
+      overflow: 'hidden' 
+    }}>
+      {/* GitHub Star Background */}
+      <Box className="star-container">
+        {[...Array(60)].map((_, i) => (
+          <Box
+            key={i}
+            className="star"
+            sx={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${1 + Math.random() * 2}px`,
+              height: `${1 + Math.random() * 2}px`,
+              '--duration': `${2 + Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </Box>
+
       {/* Background elements */}
       <Box sx={{ 
         position: 'absolute', 
@@ -13,11 +38,14 @@ const Hero = () => {
         bottom: 0, 
         backgroundImage: 'radial-gradient(#30363d 1px, transparent 1px)', 
         backgroundSize: '40px 40px', 
-        opacity: 0.2,
+        opacity: 0.15,
         zIndex: -1 
       }} />
-      <Box className="hero-glow" sx={{ top: '10%', left: '10%' }} />
-      <Box className="hero-glow" sx={{ bottom: '10%', right: '10%', background: 'radial-gradient(circle, rgba(47, 129, 247, 0.08) 0%, transparent 70%)' }} />
+      
+      {/* Star Glows */}
+      <Box className="hero-glow" sx={{ top: '20%', left: '50%', transform: 'translateX(-50%)', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(137, 87, 229, 0.12) 0%, transparent 60%)' }} />
+      <Box className="hero-glow" sx={{ top: '10%', left: '10%', background: 'radial-gradient(circle, rgba(47, 129, 247, 0.1) 0%, transparent 70%)' }} />
+      <Box className="hero-glow" sx={{ bottom: '10%', right: '10%', background: 'radial-gradient(circle, rgba(240, 136, 62, 0.05) 0%, transparent 70%)' }} />
 
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
@@ -44,7 +72,7 @@ const Hero = () => {
                   letterSpacing: '0.05em'
                 }}
               >
-                [ ] NEURAC_OS v1.1_STABLE
+                [ ] NEURAC_OS v1.2_STABLE
               </Typography>
               <Typography variant="caption" color="text.secondary" className="mono-text" sx={{ opacity: 0.7 }}>
                 {'// The_Future_of_Software'}
@@ -54,12 +82,12 @@ const Hero = () => {
             <Typography 
               variant="h1" 
               sx={{ 
-                fontSize: { xs: '3rem', md: '4rem', lg: '4.75rem' }, 
-                lineHeight: 1, 
+                fontSize: { xs: '2.75rem', md: '4rem', lg: '4.75rem' }, 
+                lineHeight: 1.1, 
                 mb: 3,
                 color: 'text.primary',
                 fontWeight: 800,
-                textShadow: '0 0 40px rgba(47, 129, 247, 0.1)'
+                textShadow: '0 0 40px rgba(47, 129, 247, 0.15)'
               }}
             >
               Build the future <br />
@@ -69,7 +97,7 @@ const Hero = () => {
             <Typography 
               variant="body1" 
               color="text.secondary" 
-              sx={{ mb: 6, mx: 'auto', maxWidth: '650px', fontWeight: 400, lineHeight: 1.6, fontSize: { xs: '1rem', md: '1.25rem' }, opacity: 0.9 }}
+              sx={{ mb: 6, mx: 'auto', maxWidth: '650px', fontWeight: 400, lineHeight: 1.6, fontSize: { xs: '1rem', md: '1.2rem' }, opacity: 0.9 }}
             >
               Neurac is the premier innovation hub where engineering meets creativity. 
               We ship intelligent solutions, conduct deep research, and scale student-led ventures.
@@ -83,7 +111,7 @@ const Hero = () => {
                 borderRadius: 2, 
                 overflow: 'hidden', 
                 width: { xs: '100%', sm: 'auto' },
-                transition: 'border-color 0.3s',
+                transition: 'all 0.3s',
                 '&:focus-within': { borderColor: 'primary.main', boxShadow: '0 0 0 3px rgba(47, 129, 247, 0.15)' }
               }}>
                 <Box 
@@ -141,7 +169,7 @@ const Hero = () => {
               </Button>
             </Stack>
 
-            <Box className="floating-delayed" sx={{ mt: 10, opacity: 0.4 }}>
+            <Box className="floating-delayed" sx={{ mt: 8, opacity: 0.4 }}>
               <Typography variant="caption" className="mono-text" sx={{ display: 'block', letterSpacing: '0.2em' }}>
                 SCROLL_TO_DISCOVER
               </Typography>
@@ -149,6 +177,39 @@ const Hero = () => {
             </Box>
           </motion.div>
         </Box>
+
+        {/* Floating Code Snippet 1 (Top Left) */}
+        <motion.div 
+          className="floating" 
+          style={{ position: 'absolute', top: '20%', left: '5%', display: 'block' }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
+            <Box className="glow-border" sx={{ background: '#161b22', p: 2, borderRadius: 2, border: '1px solid #30363d', fontFamily: '"JetBrains Mono", monospace', fontSize: '0.8rem', color: '#8b949e', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+              <span style={{color: '#ff7b72'}}>import</span> { '{' } <span style={{color: '#d2a8ff'}}>Collective</span> { '}' } <span style={{color: '#ff7b72'}}>from</span> <span style={{color: '#a5d6ff'}}>&apos;@neurac/core&apos;</span>;
+            </Box>
+          </Box>
+        </motion.div>
+
+        {/* Floating Code Snippet 2 (Bottom Right) */}
+        <motion.div 
+          className="floating-delayed" 
+          style={{ position: 'absolute', bottom: '25%', right: '5%', display: 'block' }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
+            <Box className="glow-border" sx={{ background: '#161b22', p: 2.5, borderRadius: 2, border: '1px solid #30363d', fontFamily: '"JetBrains Mono", monospace', fontSize: '0.8rem', color: '#c9d1d9', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+              <span style={{color: '#8b949e'}}>~ neurac build --target production</span>
+              <br />
+              <span style={{color: '#3fb950'}}>✓ Build successful in 1.2s</span>
+            </Box>
+          </Box>
+        </motion.div>
+
       </Container>
     </Box>
   );

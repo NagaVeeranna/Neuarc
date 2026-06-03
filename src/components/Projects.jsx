@@ -45,6 +45,7 @@ const Projects = () => {
               >
                 <Paper
                   elevation={0}
+                  className="glow-border"
                   sx={{
                     overflow: 'hidden',
                     display: 'flex',

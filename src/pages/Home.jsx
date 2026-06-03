@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Marquee from '../components/Marquee';
+import ProductTabs from '../components/ProductTabs';
 import BentoGrid from '../components/BentoGrid';
 import Services from '../components/Services';
 import WhyNeurac from '../components/WhyNeurac';
@@ -17,6 +18,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Marquee />
+      <ProductTabs />
       <BentoGrid />
       <Services />
       <WhyNeurac />

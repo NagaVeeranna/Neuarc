@@ -4,6 +4,22 @@ import { motion } from 'framer-motion';
 const CTA = () => {
   return (
     <Box sx={{ py: 20, position: 'relative', overflow: 'hidden', borderTop: '1px solid #30363d', background: '#0d1117' }}>
+      <Box className="star-container">
+        {[...Array(30)].map((_, i) => (
+          <Box
+            key={i}
+            className="star"
+            sx={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${1 + Math.random() * 2}px`,
+              height: `${1 + Math.random() * 2}px`,
+              '--duration': `${2 + Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </Box>
+
       {/* Background technical lines */}
       <Box sx={{ 
         position: 'absolute', 
