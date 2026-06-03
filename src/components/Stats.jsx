@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -11,24 +10,21 @@ const stats = [
 
 const Stats = () => {
   return (
-    <Box sx={{ py: 10, background: 'rgba(255,255,255,0.02)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+    <Box sx={{ py: 12, background: '#0d1117', borderTop: '1px solid #30363d', borderBottom: '1px solid #30363d' }}>
       <Container maxWidth="lg">
-        <Typography variant="h3" sx={{ textAlign: 'center', mb: 8 }}>
-          Numbers That <span className="text-gradient">Matter</span>
-        </Typography>
         <Grid container spacing={4} justifyContent="center">
           {stats.map((stat, index) => (
             <Grid item xs={6} md={3} key={index} sx={{ textAlign: 'center' }}>
               <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Typography variant="h2" sx={{ fontWeight: 800, mb: 1, color: 'white', textShadow: '0 0 20px rgba(255,255,255,0.3)' }}>
+                <Typography className="mono-text" variant="h2" sx={{ fontWeight: 700, mb: 1, color: 'primary.main' }}>
                   {stat.value}
                 </Typography>
-                <Typography variant="h6" color="text.secondary" sx={{ textTransform: 'uppercase', letterSpacing: 1 }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500, letterSpacing: 1, textTransform: 'uppercase' }}>
                   {stat.label}
                 </Typography>
               </motion.div>

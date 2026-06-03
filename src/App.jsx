@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from './theme/muiTheme';
 import Home from './pages/Home';
@@ -31,10 +31,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="aurora-bg">
-        <div className="aurora-circle aurora-1"></div>
-        <div className="aurora-circle aurora-2"></div>
-        <div className="aurora-circle aurora-3"></div>
+      <div className="bg-lines-container" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none', background: 'radial-gradient(circle at 50% 0%, #161b22, transparent 50%)' }}>
+        {/* Subtle grid or lines can go here in the future */}
       </div>
       <Home />
     </ThemeProvider>

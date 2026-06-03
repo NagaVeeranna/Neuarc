@@ -1,92 +1,154 @@
-import React, { Suspense } from 'react';
-import { Box, Typography, Button, Container, Grid, Stack } from '@mui/material';
+import { Box, Typography, Button, Container, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-
-const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
 const Hero = () => {
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', pt: { xs: 12, md: 0 }, position: 'relative' }}>
+    <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', pt: { xs: 15, md: 0 }, position: 'relative', overflow: 'hidden' }}>
+      {/* Background elements */}
+      <Box sx={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        backgroundImage: 'radial-gradient(#30363d 1px, transparent 1px)', 
+        backgroundSize: '40px 40px', 
+        opacity: 0.2,
+        zIndex: -1 
+      }} />
+      <Box className="hero-glow" sx={{ top: '10%', left: '10%' }} />
+      <Box className="hero-glow" sx={{ bottom: '10%', right: '10%', background: 'radial-gradient(circle, rgba(47, 129, 247, 0.08) 0%, transparent 70%)' }} />
+
       <Container maxWidth="lg">
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+        <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ maxWidth: '900px', position: 'relative', zIndex: 1 }}
+          >
+            <Box className="floating" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 4 }}>
               <Typography 
-                variant="h1" 
+                className="mono-text"
+                variant="caption" 
                 sx={{ 
-                  fontSize: { xs: '3.5rem', md: '5rem', lg: '6rem' }, 
-                  lineHeight: 1.1, 
-                  mb: 2 
+                  color: 'secondary.main', 
+                  border: '1px solid', 
+                  borderColor: 'rgba(137, 87, 229, 0.3)', 
+                  background: 'rgba(137, 87, 229, 0.05)',
+                  px: 2, 
+                  py: 0.6, 
+                  borderRadius: '20px',
+                  fontWeight: 600,
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.05em'
                 }}
               >
-                Think.<br />
-                Build.<br />
-                <span className="text-gradient">Transform.</span>
+                [ ] NEURAC_OS v1.1_STABLE
               </Typography>
-              
-              <Typography 
-                variant="h6" 
-                color="text.secondary" 
-                sx={{ mb: 4, maxWidth: '500px', fontWeight: 400, lineHeight: 1.6 }}
-              >
-                Building Intelligent Products For The Future.
-                <br /><br />
-                Neurac is a student-led innovation collective creating AI, Software, Research and Startup Solutions.
+              <Typography variant="caption" color="text.secondary" className="mono-text" sx={{ opacity: 0.7 }}>
+                {'// The_Future_of_Software'}
               </Typography>
+            </Box>
 
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+            <Typography 
+              variant="h1" 
+              sx={{ 
+                fontSize: { xs: '3rem', md: '4rem', lg: '4.75rem' }, 
+                lineHeight: 1, 
+                mb: 3,
+                color: 'text.primary',
+                fontWeight: 800,
+                textShadow: '0 0 40px rgba(47, 129, 247, 0.1)'
+              }}
+            >
+              Build the future <br />
+              of <span className="text-gradient">innovation.</span>
+            </Typography>
+            
+            <Typography 
+              variant="body1" 
+              color="text.secondary" 
+              sx={{ mb: 6, mx: 'auto', maxWidth: '650px', fontWeight: 400, lineHeight: 1.6, fontSize: { xs: '1rem', md: '1.25rem' }, opacity: 0.9 }}
+            >
+              Neurac is the premier innovation hub where engineering meets creativity. 
+              We ship intelligent solutions, conduct deep research, and scale student-led ventures.
+            </Typography>
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2.5} justifyContent="center" alignItems="center">
+              <Box sx={{ 
+                display: 'flex', 
+                background: '#161b22', 
+                border: '1px solid #30363d',
+                borderRadius: 2, 
+                overflow: 'hidden', 
+                width: { xs: '100%', sm: 'auto' },
+                transition: 'border-color 0.3s',
+                '&:focus-within': { borderColor: 'primary.main', boxShadow: '0 0 0 3px rgba(47, 129, 247, 0.15)' }
+              }}>
+                <Box 
+                  component="input" 
+                  placeholder="name@company.com" 
+                  sx={{ 
+                    background: 'transparent',
+                    border: 'none', 
+                    color: 'white',
+                    px: 3, 
+                    py: 1.8, 
+                    flexGrow: 1, 
+                    outline: 'none', 
+                    width: { sm: '300px' },
+                    fontSize: '1rem',
+                    fontFamily: 'inherit'
+                  }} 
+                />
                 <Button 
                   variant="contained" 
-                  size="large" 
-                  endIcon={<ArrowForwardIcon />}
+                  color="primary"
                   sx={{ 
-                    borderRadius: '30px', 
+                    borderRadius: 0, 
                     px: 4, 
-                    py: 1.5, 
-                    background: 'linear-gradient(45deg, #2563EB, #38BDF8)',
-                    boxShadow: '0 10px 20px rgba(37, 99, 235, 0.3)'
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    background: '#2f81f7',
+                    '&:hover': { background: '#4791f8' } 
                   }}
                 >
-                  Explore Work
+                  Join Neurac
                 </Button>
-                <Button 
-                  variant="outlined" 
-                  size="large" 
-                  startIcon={<AutoAwesomeIcon />}
-                  sx={{ 
-                    borderRadius: '30px', 
-                    px: 4, 
-                    py: 1.5,
-                    borderColor: 'rgba(255,255,255,0.2)',
-                    color: 'white',
-                    '&:hover': { borderColor: 'white', background: 'rgba(255,255,255,0.05)' }
-                  }}
-                >
-                  Join Community
-                </Button>
-              </Stack>
-            </motion.div>
-          </Grid>
-          
-          <Grid item xs={12} md={6} sx={{ height: { xs: '300px', md: '600px' }, position: 'relative' }}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              style={{ width: '100%', height: '100%' }}
-            >
-              <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>Loading 3D...</Box>}>
-                <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
-              </Suspense>
-            </motion.div>
-          </Grid>
-        </Grid>
+              </Box>
+              
+              <Button 
+                variant="outlined" 
+                size="large" 
+                sx={{ 
+                  borderRadius: 2, 
+                  px: 5, 
+                  py: 1.8,
+                  borderColor: '#30363d',
+                  color: 'white',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  background: 'rgba(255,255,255,0.02)',
+                  '&:hover': { 
+                    borderColor: 'secondary.main', 
+                    background: 'rgba(137, 87, 229, 0.05)',
+                    color: 'secondary.main'
+                  }
+                }}
+              >
+                Explore Workspace
+              </Button>
+            </Stack>
+
+            <Box className="floating-delayed" sx={{ mt: 10, opacity: 0.4 }}>
+              <Typography variant="caption" className="mono-text" sx={{ display: 'block', letterSpacing: '0.2em' }}>
+                SCROLL_TO_DISCOVER
+              </Typography>
+              <Box sx={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, #8b949e, transparent)', mx: 'auto', mt: 2 }} />
+            </Box>
+          </motion.div>
+        </Box>
       </Container>
     </Box>
   );

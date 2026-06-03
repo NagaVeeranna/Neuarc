@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, Typography, Grid, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
@@ -37,50 +36,55 @@ const services = [
 
 const Services = () => {
   return (
-    <Box sx={{ py: 15, position: 'relative' }}>
+    <Box sx={{ py: 15, position: 'relative', borderTop: '1px solid #30363d' }}>
       <Container maxWidth="lg">
-        <Typography variant="h2" sx={{ mb: 8, textAlign: 'center' }}>
-          Interactive <span className="text-gradient">Services</span>
-        </Typography>
+        <Box sx={{ mb: 10 }}>
+          <Typography variant="body1" color="primary" className="mono-text" sx={{ mb: 2, fontWeight: 600 }}>
+            {/* 02. CORE_CAPABILITIES */}
+          </Typography>
+          <Typography variant="h3" sx={{ mb: 2, fontWeight: 700 }}>
+            The power to build <span style={{ color: '#8b949e' }}>anything you imagine.</span>
+          </Typography>
+        </Box>
 
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={3}>
           {services.map((service, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <motion.div
-                whileHover={{ y: -15, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
                 <Paper
                   elevation={0}
-                  className="glass-card"
                   sx={{
-                    p: 5,
+                    p: 4,
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                    transition: 'all 0.3s',
+                    alignItems: 'flex-start',
+                    textAlign: 'left',
+                    background: 'transparent',
+                    border: '1px solid #30363d',
+                    borderRadius: 2,
+                    transition: 'all 0.2s',
                     '&:hover': {
-                      boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-                      background: 'rgba(255,255,255,0.05)'
+                      background: '#161b22',
+                      borderColor: '#8b949e'
                     }
                   }}
                 >
                   <Box sx={{ 
-                    mb: 4, 
-                    p: 3, 
-                    borderRadius: '50%', 
-                    background: 'rgba(255,255,255,0.03)',
-                    boxShadow: 'inset 0 0 20px rgba(255,255,255,0.05)'
+                    mb: 3, 
+                    color: 'primary.main',
                   }}>
                     {service.icon}
                   </Box>
                   <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
                     {service.title}
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
                     {service.description}
                   </Typography>
                 </Paper>

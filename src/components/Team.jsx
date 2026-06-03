@@ -1,8 +1,5 @@
-import React from 'react';
-import { Box, Container, Typography, Avatar, IconButton } from '@mui/material';
+import { Box, Container, Typography, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const team = [
   { role: 'Founder', name: 'Alex', angle: 0, color: '#2563EB' },
@@ -13,31 +10,34 @@ const team = [
 
 const Team = () => {
   return (
-    <Box sx={{ py: 15, position: 'relative', overflow: 'hidden' }}>
+    <Box sx={{ py: 15, position: 'relative', overflow: 'hidden', borderTop: '1px solid #30363d' }}>
       <Container maxWidth="lg">
-        <Typography variant="h2" sx={{ textAlign: 'center', mb: 2 }}>
-          Team <span className="text-gradient">Showcase</span>
-        </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ textAlign: 'center', mb: 10, fontWeight: 400 }}>
-          The minds behind the innovation.
-        </Typography>
+        <Box sx={{ mb: 10, textAlign: 'center' }}>
+          <Typography variant="body1" color="primary" className="mono-text" sx={{ mb: 2, fontWeight: 600 }}>
+            {/* 05. CORE_TEAM */}
+          </Typography>
+          <Typography variant="h2" sx={{ fontWeight: 700 }}>
+            The minds behind <span style={{ color: '#8b949e' }}>innovation.</span>
+          </Typography>
+        </Box>
 
         <Box sx={{ position: 'relative', height: 600, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          {/* Center Logo */}
+          {/* Center Branding */}
           <Box sx={{ position: 'absolute', zIndex: 10, textAlign: 'center' }}>
-            <Typography variant="h3" sx={{ fontWeight: 800, letterSpacing: 2 }}>
-              NEUR<span className="text-gradient">AC</span>
+            <Typography variant="h4" sx={{ fontWeight: 700, letterSpacing: -1, color: 'text.primary' }}>
+              NEUR<span style={{ color: '#2f81f7' }}>AC</span>
+            </Typography>
+            <Typography variant="caption" className="mono-text" sx={{ color: 'text.secondary', display: 'block' }}>
+              [ HUB_CORE ]
             </Typography>
           </Box>
 
           {/* Orbiting Members */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ ease: "linear", duration: 40, repeat: Infinity }}
-            style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.1)' }}
+          <Box
+            sx={{ position: 'absolute', width: 450, height: 450, borderRadius: '50%', border: '1px solid #30363d' }}
           >
             {team.map((member, index) => {
-              const radius = 200;
+              const radius = 225;
               const x = radius * Math.cos((member.angle * Math.PI) / 180);
               const y = radius * Math.sin((member.angle * Math.PI) / 180);
 
@@ -52,35 +52,33 @@ const Team = () => {
                   }}
                 >
                   <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Box sx={{ position: 'relative', '&:hover .socials': { opacity: 1, y: 0 } }}>
+                    <Box sx={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                       <Avatar
                         sx={{
-                          width: 80,
-                          height: 80,
-                          bgcolor: member.color,
-                          boxShadow: `0 0 20px ${member.color}80`,
+                          width: 60,
+                          height: 60,
+                          bgcolor: '#161b22',
+                          border: `2px solid ${member.color}`,
                           cursor: 'pointer',
-                          transition: '0.3s',
-                          '&:hover': { transform: 'scale(1.1)' }
+                          fontWeight: 700,
+                          color: member.color
                         }}
                       >
                         {member.name[0]}
                       </Avatar>
-                      <Box className="socials" sx={{ position: 'absolute', top: -40, left: '50%', transform: 'translateX(-50%)', opacity: 0, transition: '0.3s', display: 'flex', gap: 1 }}>
-                        <IconButton size="small" sx={{ color: 'white', bgcolor: 'rgba(255,255,255,0.1)' }}><GitHubIcon fontSize="small" /></IconButton>
-                        <IconButton size="small" sx={{ color: 'white', bgcolor: 'rgba(255,255,255,0.1)' }}><LinkedInIcon fontSize="small" /></IconButton>
+                      <Box sx={{ mt: 1.5, textAlign: 'center', p: 1, background: 'rgba(13, 17, 23, 0.8)', border: '1px solid #30363d', borderRadius: 1 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary', fontSize: '0.8rem' }}>{member.name}</Typography>
+                        <Typography className="mono-text" variant="caption" sx={{ color: 'text.secondary', fontSize: '0.7rem', display: 'block' }}>{member.role}</Typography>
                       </Box>
-                      <Typography variant="body2" sx={{ textAlign: 'center', mt: 1, fontWeight: 600, color: 'white' }}>{member.name}</Typography>
-                      <Typography variant="caption" sx={{ textAlign: 'center', display: 'block', color: 'text.secondary' }}>{member.role}</Typography>
                     </Box>
                   </motion.div>
                 </Box>
               );
             })}
-          </motion.div>
+          </Box>
         </Box>
       </Container>
     </Box>

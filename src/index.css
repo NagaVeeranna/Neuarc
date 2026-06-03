@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg-color: #020617;
-  --bg-gradient: linear-gradient(135deg, #020617 0%, #0F172A 50%, #1E3A8A 100%);
-  --primary: #2563EB;
-  --secondary: #38BDF8;
-  --accent: #818CF8;
-  --text-main: #FFFFFF;
-  --text-muted: #94A3B8;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --bg-color: #0d1117;
+  --bg-surface: #161b22;
+  --border-color: #30363d;
+  --primary: #2f81f7;
+  --secondary: #8957e5; /* Shifted to Purple as the new attractive accent */
+  --accent: #f0883e;    /* GitHub orange for highlights */
+  --text-main: #c9d1d9;
+  --text-muted: #8b949e;
+  --glass-bg: #161b22;
+  --glass-border: #30363d;
 }
 
 * {
@@ -19,93 +20,60 @@
 }
 
 body {
-  background-image: var(--bg-gradient);
   background-color: var(--bg-color);
-  background-attachment: fixed;
   color: var(--text-main);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-color);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
+  background: #424a53;
+  border: 3px solid var(--bg-color);
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.2);
+  background: #525964;
 }
 
 .glass-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: 24px;
+  border-radius: 6px;
 }
 
 .text-gradient {
-  background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+  background: linear-gradient(to right, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Aurora Background */
-.aurora-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-  background: transparent;
-}
-.aurora-circle {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  animation: float 10s infinite ease-in-out alternate;
-}
-.aurora-1 {
-  background: var(--primary);
-  width: 50vw;
-  height: 50vw;
-  top: -10vw;
-  left: -10vw;
-}
-.aurora-2 {
-  background: var(--secondary);
-  width: 45vw;
-  height: 45vw;
-  bottom: 0vw;
-  right: -5vw;
-  animation-delay: -2s;
-}
-.aurora-3 {
-  background: var(--accent);
-  width: 40vw;
-  height: 40vw;
-  top: 40vw;
-  left: 20vw;
-  animation-delay: -4s;
+/* Floating Animation */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
 
-@keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, -60px) scale(1.1); }
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.floating-delayed {
+  animation: floating 7s ease-in-out infinite;
+  animation-delay: 2s;
 }
 
 /* Utilities */
@@ -115,4 +83,18 @@ h1, h2, h3, h4, h5, h6 {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.mono-text {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(137, 87, 229, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, Typography, Grid, Paper, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
@@ -35,7 +34,7 @@ const Testimonials = () => {
                 >
                   <FormatQuoteIcon sx={{ fontSize: 60, color: 'rgba(255,255,255,0.05)', position: 'absolute', top: 20, right: 20 }} />
                   <Typography variant="body1" sx={{ mb: 4, flexGrow: 1, fontStyle: 'italic', color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.6 }}>
-                    "{test.text}"
+                    &quot;{test.text}&quot;
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <Avatar sx={{ bgcolor: test.color }}>{test.name[0]}</Avatar>

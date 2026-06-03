@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { motion } from 'framer-motion';
@@ -22,28 +22,30 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       sx={{
-        background: scrolled ? 'rgba(2, 6, 23, 0.8)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
+        background: scrolled ? 'rgba(13, 17, 23, 0.9)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        boxShadow: 'none',
+        borderBottom: scrolled ? '1px solid #30363d' : '1px solid transparent',
         transition: 'all 0.3s ease-in-out',
-        padding: { xs: '10px 0', md: '10px 40px' }
+        padding: { xs: '5px 0', md: '5px 20px' }
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography variant="h5" sx={{ fontWeight: 800, letterSpacing: 1 }}>
-          NEUR<span className="text-gradient">AC</span>
+        <Typography variant="h6" sx={{ fontWeight: 600, letterSpacing: -0.5, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box component="span" sx={{ color: 'text.primary' }}>NEUR</Box>
+          <Box component="span" sx={{ color: 'primary.main' }}>AC</Box>
         </Typography>
         
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
-          {['About', 'Services', 'Projects', 'Team', 'Join'].map((item) => (
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 3 }}>
+          {['Product', 'Solutions', 'Open Source', 'Pricing'].map((item) => (
             <Typography
               key={item}
+              variant="body2"
               sx={{
                 cursor: 'pointer',
                 fontWeight: 500,
-                color: 'text.secondary',
-                '&:hover': { color: 'text.primary' },
+                color: 'text.primary',
+                '&:hover': { color: 'text.secondary' },
                 transition: '0.2s'
               }}
             >
@@ -52,9 +54,19 @@ const Navbar = () => {
           ))}
         </Box>
 
-        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <Button variant="contained" color="primary" sx={{ borderRadius: '20px', padding: '8px 24px' }}>
-            Get Started
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2, alignItems: 'center' }}>
+          <Typography variant="body2" sx={{ cursor: 'pointer', fontWeight: 500 }}>Sign in</Typography>
+          <Button 
+            variant="outlined" 
+            sx={{ 
+              borderColor: '#30363d', 
+              color: 'white',
+              px: 2,
+              py: 0.5,
+              '&:hover': { borderColor: '#8b949e', background: 'transparent' }
+            }}
+          >
+            Sign up
           </Button>
         </Box>
         

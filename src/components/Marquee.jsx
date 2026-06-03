@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -6,32 +5,30 @@ const tags = ['AI', 'Web', 'Research', 'Innovation', 'Hackathons', 'Open Source'
 
 const Marquee = () => {
   return (
-    <Box sx={{ py: 6, overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.02)' }}>
-      <Typography variant="overline" sx={{ display: 'block', textAlign: 'center', mb: 4, color: 'text.secondary', letterSpacing: 2 }}>
-        Trusted By Future Innovators
+    <Box sx={{ py: 4, overflow: 'hidden', borderTop: '1px solid #30363d', borderBottom: '1px solid #30363d', background: '#0d1117' }}>
+      <Typography variant="caption" className="mono-text" sx={{ display: 'block', textAlign: 'center', mb: 3, color: 'text.secondary', letterSpacing: 1, fontWeight: 500 }}>
+        {/* TRUSTED_BY_INNOVATORS */}
       </Typography>
       
-      <Box sx={{ display: 'flex', whiteSpace: 'nowrap' }}>
+      <Box sx={{ display: 'flex', whiteSpace: 'nowrap', opacity: 0.6 }}>
         <motion.div
-          animate={{ x: [0, -1035] }}
-          transition={{ ease: 'linear', duration: 20, repeat: Infinity }}
+          animate={{ x: [0, -1000] }}
+          transition={{ ease: 'linear', duration: 30, repeat: Infinity }}
           style={{ display: 'flex' }}
         >
           {[...tags, ...tags, ...tags, ...tags].map((tag, index) => (
             <Typography
               key={index}
-              variant="h3"
+              variant="h4"
               sx={{
-                mx: 4,
-                fontWeight: 800,
-                color: 'transparent',
-                WebkitTextStroke: '1px rgba(255,255,255,0.2)',
+                mx: 5,
+                fontWeight: 600,
+                color: 'text.primary',
                 textTransform: 'uppercase',
+                letterSpacing: -1,
                 transition: '0.3s',
                 '&:hover': {
-                  color: 'white',
-                  WebkitTextStroke: '0px',
-                  textShadow: '0 0 20px rgba(255,255,255,0.5)'
+                  color: 'primary.main',
                 }
               }}
             >

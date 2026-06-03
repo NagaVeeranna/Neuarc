@@ -4,49 +4,55 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#2563EB',
+      main: '#2f81f7', // GitHub blue
     },
     secondary: {
-      main: '#38BDF8',
+      main: '#8957e5', // Purple accent
     },
     info: {
-      main: '#818CF8',
+      main: '#f0883e', // Orange accent
     },
     background: {
-      default: '#020617',
-      paper: 'rgba(255, 255, 255, 0.03)',
+      default: '#0d1117',
+      paper: '#161b22',
     },
     text: {
-      primary: '#FFFFFF',
-      secondary: '#94A3B8',
+      primary: '#c9d1d9',
+      secondary: '#8b949e',
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    h1: { fontFamily: '"Poppins", sans-serif', fontWeight: 700 },
-    h2: { fontFamily: '"Poppins", sans-serif', fontWeight: 700 },
-    h3: { fontFamily: '"Poppins", sans-serif', fontWeight: 600 },
-    h4: { fontFamily: '"Poppins", sans-serif', fontWeight: 600 },
-    h5: { fontFamily: '"Poppins", sans-serif', fontWeight: 500 },
-    h6: { fontFamily: '"Poppins", sans-serif', fontWeight: 500 },
+    fontFamily: '"Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif',
+    h1: { fontWeight: 800, fontSize: '4.5rem', letterSpacing: '-0.04em' },
+    h2: { fontWeight: 700, fontSize: '3rem', letterSpacing: '-0.03em' },
+    h3: { fontWeight: 700, fontSize: '2.25rem', letterSpacing: '-0.02em' },
+    h4: { fontWeight: 600, fontSize: '1.75rem' },
+    h5: { fontWeight: 600, fontSize: '1.25rem' },
+    h6: { fontWeight: 600, fontSize: '1.1rem' },
     button: { textTransform: 'none', fontWeight: 600 },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          padding: '10px 24px',
+          borderRadius: 6,
+          padding: '10px 20px',
+          boxShadow: 'none',
+          transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          '&:hover': {
+            boxShadow: 'none',
+            transform: 'translateY(-2px)',
+          }
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          background: 'rgba(255, 255, 255, 0.03)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.05)',
-          borderRadius: 24,
+          background: '#161b22',
+          border: '1px solid #30363d',
+          borderRadius: 8,
+          boxShadow: 'none',
         }
       }
     }
